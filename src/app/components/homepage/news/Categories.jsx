@@ -3,13 +3,13 @@ import Link from "next/link";
 const Categories = ({ categories, activeId }) => {
   return (
     <div>
-      <h3 className="font-bold text-xl mb-3">All Catagories</h3>
+      <h3 className="font-bold text-2xl mb-3">All Catagories</h3>
       {
         <ul className="flex flex-col gap-2">
           {categories.news_category.map((catagory) => {
             return (
               <li
-                className={`${activeId === catagory.category_id && "bg-slate-100"}`}
+                className={` text-center ${activeId === catagory.category_id && "bg-green-700 p-2 rounded-md text-center"}`}
                 key={catagory.category_id}
               >
                 <Link
