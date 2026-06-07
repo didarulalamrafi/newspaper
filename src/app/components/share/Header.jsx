@@ -5,7 +5,7 @@ import { format } from "date-fns";
 
 const Header = () => {
   return (
-    <div className="mx-auto text-center">
+    <div className="mx-auto text-center mt-4">
       <Image src={logo} width={300} height={200} alt="Logo" />
       <p>Journalism Without Fear or Favour</p>
       <p>{format(new Date(), "EEEE, MMM dd, yyyy")}</p>

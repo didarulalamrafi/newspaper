@@ -6,17 +6,17 @@ const Categories = ({ categories, activeId }) => {
       <h3 className="font-bold text-xl mb-3">All Catagories</h3>
       {
         <ul className="flex flex-col gap-2">
-          {categories.news_category.map((category) => {
+          {categories.news_category.map((catagory) => {
             return (
               <li
-                className={`${activeId === category.category_id && "bg-slate-100"}`}
-                key={category.category_id}
+                className={`${activeId === catagory.category_id && "bg-slate-100"}`}
+                key={catagory.category_id}
               >
                 <Link
-                  href={`/category/${category.category_id}`}
+                  href={`/category/${catagory.category_id}`}
                   className="block"
                 >
-                  {category.category_name}
+                  {catagory.category_name}
                 </Link>
               </li>
             );
