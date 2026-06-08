@@ -1,5 +1,8 @@
 import React from "react";
 import Navbar from "../../components/share/Navbar";
+export const metadata = {
+  title: "Newspaper- about",
+};
 
 const AboutPage = () => {
   return (
