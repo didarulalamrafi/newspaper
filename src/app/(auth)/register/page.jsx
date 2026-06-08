@@ -1,7 +1,63 @@
-import React from "react";
+"use client";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
 
 const RegisterPage = () => {
-  return <div>Register page</div>;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm();
+  const handelRegister = (data) => {
+    // console.log(data, "data");
+    // e.preventDefault();
+    // const email = e.target.email.value;
+    // const password = e.target.password.value;
+    // console.log(email, password);
+  };
+  console.log(errors);
+  console.log(watch("email"));
+  console.log(watch("email"));
+  return (
+    <div className="mx-auto container">
+      <div className="mx-auto ">
+        <h1 className="text-center font-bold text-4xl">Register Page</h1>
+        <div className="my-4 bg-base-200 border-base-300 rounded-box p-8 mx-auto w-md border">
+          <form action="" onSubmit={handleSubmit(handelRegister)}>
+            <fieldset className="fieldset ">
+              <label className="label ">Email</label>
+              <input
+                type="email"
+                {...register("email", {
+                  required: "Email filed is requried",
+                })}
+                className="input w-full"
+                placeholder="Email"
+              />
+              {errors.email && (
+                <p className="text-red-600">{errors.email.message}</p>
+              )}
+
+              <label className="label">Password</label>
+              <input
+                type="password"
+                {...register("password", {
+                  required: "Password filed is requried",
+                })}
+                className="input w-full"
+                placeholder="Password"
+              />
+              {errors.password && (
+                <p className="text-red-600">{errors.password.message}</p>
+              )}
+              <button className="btn btn-neutral mt-4">Login</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default RegisterPage;
