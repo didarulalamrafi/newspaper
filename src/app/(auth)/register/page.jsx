@@ -1,4 +1,6 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
+import { error } from "better-auth/api";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 
@@ -9,14 +11,24 @@ const RegisterPage = () => {
     formState: { errors },
     watch,
   } = useForm();
-  const handelRegister = (data) => {
+  const handelRegister = async (data) => {
     console.log(data, "data");
-    // e.preventDefault();
-    // const email = e.target.email.value;
-    // const password = e.target.password.value;
-    // console.log(email, password);
+    const { name, photo, email, password } = data;
+    const { data: res, error } = await authClient.signUp.email({
+      name: name, // required
+      email: email, // required
+      password: password, // required
+      image: photo,
+      callbackURL: "/",
+    });
+    if (error) {
+      alert(error.message);
+    }
+    if (res) {
+      alert("Sign up Successful");
+    }
+    console.log(res, error);
   };
-  console.log(errors);
   // console.log(watch("email"));
 
   return (
@@ -38,7 +50,7 @@ const RegisterPage = () => {
               {errors.name && (
                 <p className="text-red-600">{errors.name.message}</p>
               )}
-              <label className="label ">Email</label>
+              <label className="label ">Photo url</label>
               <input
                 type="Photo"
                 {...register("photo", {
