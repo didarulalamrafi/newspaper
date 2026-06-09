@@ -10,15 +10,15 @@ const RegisterPage = () => {
     watch,
   } = useForm();
   const handelRegister = (data) => {
-    // console.log(data, "data");
+    console.log(data, "data");
     // e.preventDefault();
     // const email = e.target.email.value;
     // const password = e.target.password.value;
     // console.log(email, password);
   };
   console.log(errors);
-  console.log(watch("email"));
-  console.log(watch("email"));
+  // console.log(watch("email"));
+
   return (
     <div className="mx-auto container">
       <div className="mx-auto ">
@@ -26,6 +26,30 @@ const RegisterPage = () => {
         <div className="my-4 bg-base-200 border-base-300 rounded-box p-8 mx-auto w-md border">
           <form action="" onSubmit={handleSubmit(handelRegister)}>
             <fieldset className="fieldset ">
+              <label className="label ">Name</label>
+              <input
+                type="name"
+                {...register("name", {
+                  required: "Name filed is requried",
+                })}
+                className="input w-full"
+                placeholder="Enter your name"
+              />
+              {errors.name && (
+                <p className="text-red-600">{errors.name.message}</p>
+              )}
+              <label className="label ">Email</label>
+              <input
+                type="Photo"
+                {...register("photo", {
+                  required: "Photo filed is requried",
+                })}
+                className="input w-full"
+                placeholder="Enter your Photo url"
+              />
+              {errors.photo && (
+                <p className="text-red-600">{errors.photo.message}</p>
+              )}
               <label className="label ">Email</label>
               <input
                 type="email"
@@ -51,7 +75,7 @@ const RegisterPage = () => {
               {errors.password && (
                 <p className="text-red-600">{errors.password.message}</p>
               )}
-              <button className="btn btn-neutral mt-4">Login</button>
+              <button className="btn btn-neutral mt-4">Register</button>
             </fieldset>
           </form>
         </div>
