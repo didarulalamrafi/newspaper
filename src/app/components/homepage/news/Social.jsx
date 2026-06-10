@@ -8,8 +8,16 @@ const Social = () => {
     const data = await authClient.signIn.social({
     provider: "google",
   });
-  console.log(data, "data")
+    console.log(data, "data")
   }
+  const handleLoginWithGithub = async ()=>{
+    const data = await authClient.signIn.social({
+    provider: "github",
+  });
+    console.log(data, "data")
+  }
+
+
   return (
     <div className="text-center my-2">
       <h3>Login with</h3>
@@ -19,7 +27,7 @@ const Social = () => {
           <FaGoogle />
           Login with Google
         </button>
-        <button className="btn">
+        <button className="btn" onClick={handleLoginWithGithub}>
           <FaGithub />
           Login with Github
         </button>
